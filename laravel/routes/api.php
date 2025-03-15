@@ -1,0 +1,27 @@
+<?php
+
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
+
+Route::controller(CategoryController::class)->prefix('categories')->group(function(){
+    Route::get('/','getCategories');
+    Route::post('/','createCategory');
+    Route::get('/{categoryId}','getCategory');
+    Route::patch('/{categoryId}','updateCategory');
+    Route::delete('/{categoryId}','deleteCategory');
+});
+
+// Product routes
+Route::controller(ProductController::class)->prefix('products')->group(function () {
+    Route::get('/', 'getProducts'); // Get all products
+    Route::post('/', 'createProduct'); // Create a new product
+    Route::get('/{productId}', 'getProduct'); // Get a specific product
+    Route::patch('/{productId}', 'updateProduct'); // Update a specific product
+    Route::delete('/{productId}', 'deleteProduct'); // Delete a specific product
+});
