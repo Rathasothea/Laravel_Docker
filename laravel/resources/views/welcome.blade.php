@@ -10,11 +10,16 @@
 </head>
 <body>
     <div class="container">
-        <h3>Welcome to Ecommerce backend server</h3>
+        <h3 class="h3">Welcome to Ecommerce backend </h3>
         <h5>
             Powered by Laravel v.10 <br/>
             Version 0.1
         </h5>
     </div>
 </body>
+<style>
+    .h3{
+        color: red;
+    }
+</style>
 </html>
